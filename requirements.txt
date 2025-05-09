@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+peewee
+pymysql
+psycopg2-binary 
