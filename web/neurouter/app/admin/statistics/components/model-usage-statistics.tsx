@@ -203,6 +203,81 @@ export function ModelUsageStatistics({ date: initialDate }: ModelUsageStatistics
     },
   ]
 
+  // Mock data for key usage
+  const keyUsageData = [
+    {
+      id: "k1",
+      alias: "Production API",
+      spend: "$0.00",
+      requests: 4,
+      tokensData: tokensOverTimeData,
+      requestsData: requestsOverTimeData,
+    },
+    {
+      id: "k2",
+      alias: "Development API",
+      spend: "$0.00",
+      requests: 2,
+      tokensData: tokensOverTimeData.map((item) => ({
+        ...item,
+        metrics_prompt_tokens: item.metrics_prompt_tokens * 1.1,
+        metrics_completion_tokens: item.metrics_completion_tokens * 0.8,
+        metrics_total_tokens: item.metrics_prompt_tokens * 1.1 + item.metrics_completion_tokens * 0.8,
+      })),
+      requestsData: requestsOverTimeData.map((item) => ({
+        ...item,
+        metrics_successful_requests: Math.floor(item.metrics_successful_requests * 1.2),
+        metrics_failed_requests: Math.floor(item.metrics_failed_requests * 0.7),
+        total_requests: Math.floor(item.total_requests * 1.1),
+        spend: item.spend * 1.1,
+        cache_hits: Math.floor(item.cache_hits * 1.2),
+        cache_misses: Math.floor(item.cache_misses * 0.8),
+      })),
+    },
+    {
+      id: "k3",
+      alias: "Testing API",
+      spend: "$0.00",
+      requests: 3,
+      tokensData: tokensOverTimeData.map((item) => ({
+        ...item,
+        metrics_prompt_tokens: item.metrics_prompt_tokens * 0.7,
+        metrics_completion_tokens: item.metrics_completion_tokens * 1.3,
+        metrics_total_tokens: item.metrics_prompt_tokens * 0.7 + item.metrics_completion_tokens * 1.3,
+      })),
+      requestsData: requestsOverTimeData.map((item) => ({
+        ...item,
+        metrics_successful_requests: Math.floor(item.metrics_successful_requests * 1.3),
+        metrics_failed_requests: Math.floor(item.metrics_failed_requests * 0.6),
+        total_requests: Math.floor(item.total_requests * 1.2),
+        spend: item.spend * 0.9,
+        cache_hits: Math.floor(item.cache_hits * 1.1),
+        cache_misses: Math.floor(item.cache_misses * 0.9),
+      })),
+    },
+    {
+      id: "k4",
+      alias: "Research API",
+      spend: "$0.00",
+      requests: 1,
+      tokensData: tokensOverTimeData.map((item) => ({
+        ...item,
+        metrics_prompt_tokens: item.metrics_prompt_tokens * 0.4,
+        metrics_completion_tokens: item.metrics_completion_tokens * 0.6,
+        metrics_total_tokens: item.metrics_prompt_tokens * 0.4 + item.metrics_completion_tokens * 0.6,
+      })),
+      requestsData: requestsOverTimeData.map((item) => ({
+        ...item,
+        metrics_successful_requests: Math.floor(item.metrics_successful_requests * 0.5),
+        metrics_failed_requests: Math.floor(item.metrics_failed_requests * 0.5),
+        total_requests: Math.floor(item.total_requests * 0.5),
+        spend: item.spend * 0.5,
+        cache_hits: Math.floor(item.cache_hits * 0.5),
+        cache_misses: Math.floor(item.cache_misses * 0.5),
+      })),
+    },
+  ]
+
   // Function to clear date selection
   const clearDateSelection = () => {
     setDate(undefined)
@@ -1033,7 +1108,136 @@ export function ModelUsageStatistics({ date: initialDate }: ModelUsageStatistics
 
       {/* Key Activity Tab Content */}
       {activityType === "key" && (
-        <div className="text-center p-8 text-muted-foreground">Key Activity content will be displayed here.</div>
+        <div className="grid gap-4">
+          {keyUsageData.map((key) => (
+            <Collapsible key={key.id}>
+              <CollapsibleTrigger asChild>
+                <Card className="mb-2 cursor-pointer hover:bg-muted/50 transition-colors">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <div>
+                      <CardTitle className="text-base font-medium">
+                        {key.alias} <span className="text-xs text-muted-foreground ml-2">({key.id})</span>
+                      </CardTitle>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-xs text-muted-foreground">总消耗</div>
+                      <div className="text-lg font-bold">{key.spend}</div>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <div className="p-4">
+                  <Tabs defaultValue="requests" className="w-full">
+                    <TabsList className="grid w-full max-w-md grid-cols-4 mb-2">
+                      <TabsTrigger value="requests">请求</TabsTrigger>
+                      <TabsTrigger value="tokens">Token</TabsTrigger>
+                      <TabsTrigger value="spend">消耗</TabsTrigger>
+                      <TabsTrigger value="cache">缓存</TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="requests" className="pt-4">
+                      <div className="h-[200px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={key.requestsData}>
+                            <defs>
+                              <linearGradient id={`colorSuccessful-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#10B981" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#10B981" stopOpacity={0.1} />
+                              </linearGradient>
+                              <linearGradient id={`colorFailed-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#EF4444" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#EF4444" stopOpacity={0.1} />
+                              </linearGradient>
+                              <linearGradient id={`colorTotal-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#6366F1" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#6366F1" stopOpacity={0.1} />
+                              </linearGradient>
+                            </defs>
+                            <XAxis dataKey="date" tickFormatter={(value) => value.substring(5)} stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <Tooltip />
+                            <Area type="monotone" dataKey="metrics_successful_requests" name="成功" stroke="#10B981" fillOpacity={1} fill={`url(#colorSuccessful-key-${key.id})`} />
+                            <Area type="monotone" dataKey="metrics_failed_requests" name="失败" stroke="#EF4444" fillOpacity={1} fill={`url(#colorFailed-key-${key.id})`} />
+                            <Area type="monotone" dataKey="total_requests" name="总数" stroke="#6366F1" fillOpacity={0.5} fill={`url(#colorTotal-key-${key.id})`} />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="tokens" className="pt-4">
+                      <div className="h-[200px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={key.tokensData}>
+                            <defs>
+                              <linearGradient id={`colorPrompt-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#8884d8" stopOpacity={0.1} />
+                              </linearGradient>
+                              <linearGradient id={`colorCompletion-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0.1} />
+                              </linearGradient>
+                              <linearGradient id={`colorTotalTokens-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#6366F1" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#6366F1" stopOpacity={0.1} />
+                              </linearGradient>
+                            </defs>
+                            <XAxis dataKey="date" tickFormatter={(value) => value.substring(5)} stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <Tooltip />
+                            <Area type="monotone" dataKey="metrics_prompt_tokens" name="Prompt Tokens" stroke="#8884d8" fillOpacity={1} fill={`url(#colorPrompt-key-${key.id})`} />
+                            <Area type="monotone" dataKey="metrics_completion_tokens" name="Completion Tokens" stroke="#82ca9d" fillOpacity={1} fill={`url(#colorCompletion-key-${key.id})`} />
+                            <Area type="monotone" dataKey="metrics_total_tokens" name="Total Tokens" stroke="#6366F1" fillOpacity={0.5} fill={`url(#colorTotalTokens-key-${key.id})`} />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="spend" className="pt-4">
+                      <div className="h-[200px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={key.requestsData}>
+                            <defs>
+                              <linearGradient id={`colorSpend-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#06b6d4" stopOpacity={0.1} />
+                              </linearGradient>
+                            </defs>
+                            <XAxis dataKey="date" tickFormatter={(value) => value.substring(5)} stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value.toFixed(2)}`} />
+                            <Tooltip formatter={(value) => `$${Number(value).toFixed(2)}`} />
+                            <Area type="monotone" dataKey="spend" name="消耗" stroke="#06b6d4" fillOpacity={1} fill={`url(#colorSpend-key-${key.id})`} />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </TabsContent>
+                    <TabsContent value="cache" className="pt-4">
+                      <div className="h-[200px]">
+                        <ResponsiveContainer width="100%" height="100%">
+                          <AreaChart data={key.requestsData}>
+                            <defs>
+                              <linearGradient id={`colorCacheHits-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#10B981" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#10B981" stopOpacity={0.1} />
+                              </linearGradient>
+                              <linearGradient id={`colorCacheMisses-key-${key.id}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.8} />
+                                <stop offset="95%" stopColor="#F59E0B" stopOpacity={0.1} />
+                              </linearGradient>
+                            </defs>
+                            <XAxis dataKey="date" tickFormatter={(value) => value.substring(5)} stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                            <Tooltip />
+                            <Area type="monotone" dataKey="cache_hits" name="Cache Hits" stroke="#10B981" fillOpacity={1} fill={`url(#colorCacheHits-key-${key.id})`} />
+                            <Area type="monotone" dataKey="cache_misses" name="Cache Misses" stroke="#F59E0B" fillOpacity={1} fill={`url(#colorCacheMisses-key-${key.id})`} />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          ))}
+        </div>
       )}
     </div>
   )
