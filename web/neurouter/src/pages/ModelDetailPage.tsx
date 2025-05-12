@@ -248,16 +248,6 @@ export default function ModelDetailPage() {
                     </Button>
                 </div>
 
-                <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-2">
-                        <span className="text-sm">Standard</span>
-                        <ChevronDown className="h-4 w-4" />
-                    </div>
-                    <Button variant="ghost" size="sm" className="flex items-center gap-1 text-sm">
-                        Model weights <ExternalLink className="h-3 w-3 ml-1" />
-                    </Button>
-                </div>
-
                 <Tabs defaultValue="overview" className="w-full">
                     <TabsList className="border-b w-full justify-start rounded-none bg-transparent mb-6">
                         <TabsTrigger
@@ -357,7 +347,11 @@ export default function ModelDetailPage() {
                                         {providers.map((provider) => (
                                             <React.Fragment key={provider.id}>
                                                 <tr className={`border-b ${expandedProvider === provider.id ? "bg-muted/30" : ""}`}>
-                                                    <td className="py-4 px-4 font-medium">{provider.name}</td>
+                                                    <td className="py-4 px-4 font-medium">
+                                                        <Link to={`/providers/${provider.id}`} className="hover:text-primary">
+                                                            {provider.name}
+                                                        </Link>
+                                                    </td>
                                                     <td className="py-4 px-4">{provider.context}</td>
                                                     <td className="py-4 px-4">{provider.maxOutput}</td>
                                                     <td className="py-4 px-4">{provider.inputCost}</td>

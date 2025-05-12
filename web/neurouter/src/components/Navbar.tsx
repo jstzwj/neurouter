@@ -3,10 +3,30 @@
 import { Link, useLocation } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import { useState } from "react"
-import { Search, Sun, Moon, Menu, X } from "lucide-react"
+import {
+  Search,
+  Sun,
+  Moon,
+  Menu,
+  X,
+  CreditCard,
+  Key,
+  Activity,
+  Settings,
+  LogOut,
+  Shield,
+  BarChart2,
+  User,
+} from "lucide-react"
 import { Button } from "./ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "./ui/dropdown-menu"
 import { useTheme } from "./theme-provider"
 import LanguageSelector from "./LanguageSelector"
 import { Input } from "./ui/input"
@@ -82,19 +102,63 @@ export default function Navbar() {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link to="/profile">{t("nav.profile")}</Link>
+                  <Link to="/profile" className="flex items-center">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/settings">{t("nav.settings")}</Link>
+                  <Link to="/settings/credits" className="flex items-center">
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    <span>Credits</span>
+                  </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/settings/api-keys" className="flex items-center">
+                    <Key className="mr-2 h-4 w-4" />
+                    <span>Keys</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/activity" className="flex items-center">
+                    <Activity className="mr-2 h-4 w-4" />
+                    <span>Activity</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/settings" className="flex items-center">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                  </Link>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuItem asChild>
+                  <Link to="/admin" className="flex items-center">
+                    <Shield className="mr-2 h-4 w-4" />
+                    <span>Admin Panel</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/statistics" className="flex items-center">
+                    <BarChart2 className="mr-2 h-4 w-4" />
+                    <span>Site Statistics</span>
+                  </Link>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
                 <DropdownMenuItem
                   onClick={() => {
                     localStorage.removeItem("token")
                     setIsLoggedIn(false)
                     window.location.href = "/login"
                   }}
+                  className="flex items-center"
                 >
-                  Logout
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

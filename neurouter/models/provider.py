@@ -1,7 +1,7 @@
 from peewee import *
 from .db import db
 
-class Channel(Model):
+class Provider(Model):
     id = AutoField()
     type = IntegerField(default=0)
     key = TextField()

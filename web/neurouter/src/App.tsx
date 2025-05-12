@@ -18,6 +18,11 @@ const ProvidersPage = lazy(() => import("./pages/ProvidersPage"))
 const DatasetsPage = lazy(() => import("./pages/DatasetsPage"))
 const ProfilePage = lazy(() => import("./pages/ProfilePage"))
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"))
+const ProviderDetailPage = lazy(() => import("./pages/ProviderDetailPage"))
+const CreditsPage = lazy(() => import("./pages/CreditsPage"))
+const ApiKeysPage = lazy(() => import("./pages/ApiKeysPage"))
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"))
+const StatisticsPage = lazy(() => import("./pages/StatisticsPage"))
 
 function App() {
   return (
@@ -31,10 +36,15 @@ function App() {
           <Route path="rankings" element={<RankingsPage />} />
           <Route path="docs" element={<DocsPage />} />
           <Route path="providers" element={<ProvidersPage />} />
+          <Route path="providers/:providerId" element={<ProviderDetailPage />} />
           <Route path="datasets" element={<DatasetsPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="settings/credits" element={<CreditsPage />} />
+          <Route path="settings/api-keys" element={<ApiKeysPage />} />
+          <Route path="settings/privacy" element={<PrivacyPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="admin" element={<AdminPage />} />
+          <Route path="statistics" element={<StatisticsPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
         </Route>

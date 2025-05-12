@@ -99,7 +99,34 @@
     "register": "登録",
     "forgotPassword": "パスワードをお忘れですか？",
     "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
-    "dontHaveAccount": "アカウントをお持ちでないですか？"
+    "dontHaveAccount": "アカウントをお持ち��ないですか？"
+  },
+  "rankings": {
+    "title": "LLMランキング",
+    "subtitle": "すべてのプロンプトのモデルを比較",
+    "leaderboard": "リーダーボード",
+    "tokenUsage": "モデル間のトークン使用量",
+    "timeRanges": {
+      "today": "今日のトップ",
+      "week": "今週",
+      "month": "今月",
+      "allTime": "全期間"
+    },
+    "categories": {
+      "all": "すべてのカテゴリー",
+      "roleplay": "ロールプレイ",
+      "programming": "プログラミング",
+      "marketing": "マーケティング",
+      "marketingSeo": "マーケティング/SEO",
+      "technology": "テクノロジー",
+      "science": "科学",
+      "translation": "翻訳",
+      "legal": "法律",
+      "finance": "金融",
+      "health": "健康",
+      "trivia": "トリビア",
+      "academia": "学術"
+    }
   },
   "footer": {
     "allRightsReserved": "全著作権所有。",

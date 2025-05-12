@@ -66,7 +66,12 @@ export default function ModelCard({ model }: ModelCardProps) {
                         <div className="text-sm text-muted-foreground">
                             <div className="flex items-center gap-4 flex-wrap">
                                 <div className="flex items-center gap-1">
-                                    <span className="font-medium">by {model.provider.name}</span>
+                                    <span className="font-medium">
+                                        by{" "}
+                                        <Link to={`/providers/${model.provider.id}`} className="hover:text-primary">
+                                            {model.provider.name}
+                                        </Link>
+                                    </span>
                                 </div>
                                 <div className="flex items-center gap-1">
                                     <span>{formatNumber(model.contextLength)} context</span>

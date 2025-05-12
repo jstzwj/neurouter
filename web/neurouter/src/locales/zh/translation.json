@@ -101,6 +101,33 @@
     "alreadyHaveAccount": "已有账户？",
     "dontHaveAccount": "没有账户？"
   },
+  "rankings": {
+    "title": "LLM 排名",
+    "subtitle": "比较所有提示的模型",
+    "leaderboard": "排行榜",
+    "tokenUsage": "模型间的令牌使用情况",
+    "timeRanges": {
+      "today": "今日排名",
+      "week": "本周",
+      "month": "本月",
+      "allTime": "全部时间"
+    },
+    "categories": {
+      "all": "所有类别",
+      "roleplay": "角色扮演",
+      "programming": "编程",
+      "marketing": "营销",
+      "marketingSeo": "营销/SEO",
+      "technology": "技术",
+      "science": "科学",
+      "translation": "翻译",
+      "legal": "法律",
+      "finance": "金融",
+      "health": "健康",
+      "trivia": "知识问答",
+      "academia": "学术"
+    }
+  },
   "footer": {
     "allRightsReserved": "版权所有。",
     "products": "产品",

@@ -101,6 +101,33 @@
     "alreadyHaveAccount": "Already have an account?",
     "dontHaveAccount": "Don't have an account?"
   },
+  "rankings": {
+    "title": "LLM Rankings",
+    "subtitle": "Compare models for all prompts",
+    "leaderboard": "Leaderboard",
+    "tokenUsage": "Token usage across models",
+    "timeRanges": {
+      "today": "Top today",
+      "week": "This week",
+      "month": "This month",
+      "allTime": "All time"
+    },
+    "categories": {
+      "all": "All Categories",
+      "roleplay": "Roleplay",
+      "programming": "Programming",
+      "marketing": "Marketing",
+      "marketingSeo": "Marketing/Seo",
+      "technology": "Technology",
+      "science": "Science",
+      "translation": "Translation",
+      "legal": "Legal",
+      "finance": "Finance",
+      "health": "Health",
+      "trivia": "Trivia",
+      "academia": "Academia"
+    }
+  },
   "footer": {
     "allRightsReserved": "All rights reserved.",
     "products": "Products",
