@@ -1,0 +1,120 @@
+{
+  "app": {
+    "name": "NeuRouter",
+    "tagline": "LLMのための統一インターフェース",
+    "subtitle": "より良い価格、より良い稼働時間、サブスクリプションなし。"
+  },
+  "nav": {
+    "models": "モデル",
+    "chat": "チャット",
+    "rankings": "ランキング",
+    "docs": "ドキュメント",
+    "login": "ログイン",
+    "register": "登録",
+    "settings": "設定",
+    "admin": "管理",
+    "providers": "プロバイダー",
+    "datasets": "データセット",
+    "profile": "プロフィール"
+  },
+  "search": {
+    "models": "モデルを検索"
+  },
+  "models": {
+    "title": "モデル",
+    "resetFilters": "フィルターをリセット",
+    "filterModels": "モデルをフィルター",
+    "sort": "並べ替え",
+    "notFound": "モデルが見つかりません",
+    "modelNotFoundDescription": "お探しのモデルは存在しないか、削除されました。",
+    "backToModels": "モデル一覧に戻る",
+    "filters": {
+      "inputModalities": "入力モダリティ",
+      "contextLength": "コンテキスト長",
+      "promptPricing": "プロンプト価格",
+      "series": "シリーズ",
+      "categories": "カテゴリー"
+    },
+    "sortOptions": {
+      "popularity": "人気順",
+      "priceLowToHigh": "価格：安い順",
+      "priceHighToLow": "価格：高い順",
+      "newest": "最新順",
+      "contextLength": "コンテキスト長"
+    },
+    "viewOptions": {
+      "grid": "グリッド表示",
+      "list": "リスト表示"
+    },
+    "detail": {
+      "showMore": "もっと見る",
+      "showLess": "閉じる",
+      "chat": "チャット",
+      "compare": "比較",
+      "modelWeights": "モデルの重み",
+      "overview": "概要",
+      "providers": "プロバイダー",
+      "versions": "バージョン",
+      "apps": "アプリ",
+      "activity": "アクティビティ",
+      "uptime": "稼働時間",
+      "api": "API",
+      "aboutModel": "について",
+      "keyFeatures": "主な特徴",
+      "useCases": "ユースケース",
+      "providersFor": "のプロバイダー",
+      "routesRequests": "はプロンプトのサイズとパラメータを処理できる最適なプロバイダーにリクエストをルーティングし、フォールバックにより最大化します",
+      "provider": "プロバイダー",
+      "context": "コンテキスト",
+      "maxOutput": "最大出力",
+      "input": "入力",
+      "output": "出力",
+      "latency": "レイテンシー",
+      "throughput": "スループット"
+    }
+  },
+  "home": {
+    "startMessage": "メッセージを入力...",
+    "send": "送信",
+    "featuredModels": "注目のモデル",
+    "viewTrending": "トレンドを見る",
+    "stats": {
+      "monthlyTokens": "月間トークン",
+      "globalUsers": "グローバルユーザー",
+      "activeProviders": "アクティブプロバイダー",
+      "models": "モデル"
+    }
+  },
+  "models": {
+    "tokens": "トークン/週",
+    "latency": "レイテンシー",
+    "growth": "週間成長率",
+    "new": "新規"
+  },
+  "auth": {
+    "email": "メール",
+    "password": "パスワード",
+    "confirmPassword": "パスワードを確認",
+    "login": "ログイン",
+    "register": "登録",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "dontHaveAccount": "アカウントをお持ちでないですか？"
+  },
+  "footer": {
+    "allRightsReserved": "全著作権所有。",
+    "products": "製品",
+    "resources": "リソース",
+    "company": "会社",
+    "about": "会社概要",
+    "blog": "ブログ",
+    "contact": "お問い合わせ",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "status": "サービス状況",
+    "announcements": "お知らせ",
+    "partners": "パートナー",
+    "careers": "採用情報",
+    "pricing": "料金"
+  }
+}

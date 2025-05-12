@@ -1,0 +1,120 @@
+{
+  "app": {
+    "name": "NeuRouter",
+    "tagline": "The Unified Interface For LLMs",
+    "subtitle": "Better prices, better uptime, no subscription."
+  },
+  "nav": {
+    "models": "Models",
+    "chat": "Chat",
+    "rankings": "Rankings",
+    "docs": "Docs",
+    "login": "Login",
+    "register": "Register",
+    "settings": "Settings",
+    "admin": "Admin",
+    "providers": "Providers",
+    "datasets": "Datasets",
+    "profile": "Profile"
+  },
+  "search": {
+    "models": "Search models"
+  },
+  "models": {
+    "title": "Models",
+    "resetFilters": "Reset Filters",
+    "filterModels": "Filter models",
+    "sort": "Sort",
+    "notFound": "Model Not Found",
+    "modelNotFoundDescription": "The model you are looking for does not exist or has been removed.",
+    "backToModels": "Back to Models",
+    "filters": {
+      "inputModalities": "Input Modalities",
+      "contextLength": "Context length",
+      "promptPricing": "Prompt pricing",
+      "series": "Series",
+      "categories": "Categories"
+    },
+    "sortOptions": {
+      "popularity": "Popularity",
+      "priceLowToHigh": "Price: Low to High",
+      "priceHighToLow": "Price: High to Low",
+      "newest": "Newest",
+      "contextLength": "Context Length"
+    },
+    "viewOptions": {
+      "grid": "Grid View",
+      "list": "List View"
+    },
+    "detail": {
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "chat": "Chat",
+      "compare": "Compare",
+      "modelWeights": "Model weights",
+      "overview": "Overview",
+      "providers": "Providers",
+      "versions": "Versions",
+      "apps": "Apps",
+      "activity": "Activity",
+      "uptime": "Uptime",
+      "api": "API",
+      "aboutModel": "About",
+      "keyFeatures": "Key Features",
+      "useCases": "Use Cases",
+      "providersFor": "Providers for",
+      "routesRequests": "routes requests to the best providers that are able to handle your prompt size and parameters, with fallbacks to maximize",
+      "provider": "Provider",
+      "context": "Context",
+      "maxOutput": "Max Output",
+      "input": "Input",
+      "output": "Output",
+      "latency": "Latency",
+      "throughput": "Throughput"
+    }
+  },
+  "home": {
+    "startMessage": "Start a message...",
+    "send": "Send",
+    "featuredModels": "Featured Models",
+    "viewTrending": "View Trending",
+    "stats": {
+      "monthlyTokens": "Monthly Tokens",
+      "globalUsers": "Global Users",
+      "activeProviders": "Active Providers",
+      "models": "Models"
+    }
+  },
+  "models": {
+    "tokens": "Tokens/wk",
+    "latency": "Latency",
+    "growth": "Weekly growth",
+    "new": "New"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "login": "Login",
+    "register": "Register",
+    "forgotPassword": "Forgot Password?",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved.",
+    "products": "Products",
+    "resources": "Resources",
+    "company": "Company",
+    "about": "About Us",
+    "blog": "Blog",
+    "contact": "Contact Us",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "status": "Status",
+    "announcements": "Announcements",
+    "partners": "Partners",
+    "careers": "Careers",
+    "pricing": "Pricing"
+  }
+}
